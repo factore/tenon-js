@@ -1,0 +1,39 @@
+{
+  "name": "tenon",
+  "version": "2.0.0",
+  "description": "Front-end code required to run Tenon 2.x",
+  "main": "tenon.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/factore/tenon-scripts.git"
+  },
+  "author": "factor[e] design initiative",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/factore/tenon-scripts/issues"
+  },
+  "homepage": "https://github.com/factore/tenon-scripts#readme",
+  "dependencies": {
+    "babel-core": "^5.8.29",
+    "classnames": "^2.2.3",
+    "cookies-js": "^1.2.2",
+    "es6-promise": "^3.0.2",
+    "fetch-polyfill": "^0.8.1",
+    "file-system": "^2.2.1",
+    "isomorphic-fetch": "^2.2.0",
+    "jquery": "^2.2.3",
+    "lodash": "^3.10.1",
+    "pluralize": "^1.2.1",
+    "react": "^15.0",
+    "react-addons-css-transition-group": "^15.0",
+    "react-dom": "^15.0",
+    "react-dragula": "^1.1.15",
+    "react-portal": "^2.1.0",
+    "react-redux": "^4.4.5",
+    "redux": "^3.4.0",
+    "redux-thunk": "^2.0.1"
+  }
+}
