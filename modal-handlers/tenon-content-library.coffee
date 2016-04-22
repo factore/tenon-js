@@ -1,4 +1,6 @@
-class Tenon.features.tenonContent.Library
+ModalWindows = require('tenon/features/modal-windows')
+
+class Library
   constructor: (@$link, @$el, @$template) ->
     @_setContext()
     @$el.find('a.add_fields').on('click', @_closeModal )
@@ -9,7 +11,7 @@ class Tenon.features.tenonContent.Library
         $(this).find('img').attr 'src', '/assets/tenon/tenon-content/' + $(this).find('img').data('row-type') + '.png'
     )
 
-  _closeModal: => Tenon.features.ModalWindows.closeModals()
+  _closeModal: => ModalWindows.closeModals()
 
   _setContext: =>
     if @$link.hasClass('initial-row')
@@ -21,8 +23,8 @@ class Tenon.features.tenonContent.Library
 
   _setToInsertInitialRow: =>
     node = @$link.closest('.tn-tc').find('.tn-tc__rows')
-    $('.tn-tc-library a').data('association-insertion-node', node)
-    $('.tn-tc-library a').data('association-insertion-method', 'append')
+    $('[data-tn-tc-library] a').data('association-insertion-node', node)
+    $('[data-tn-tc-library] a').data('association-insertion-method', 'append')
 
   _setToInsertByData: =>
     datas = [
@@ -31,10 +33,12 @@ class Tenon.features.tenonContent.Library
       'association-insertion-traversal'
     ]
     for data in datas
-      $('.tn-tc-library a').data(data, @$link.data(data))
+      $('[data-tn-tc-library] a').data(data, @$link.data(data))
 
   _setToInsertRelative: =>
     method = @$link.data('tn-tc-insert')
     console.log(method)
-    $('.tn-tc-library a').data('association-insertion-node', @$link.closest('.tn-tc-row'))
-    $('.tn-tc-library a').data('association-insertion-method', method)
+    $('[data-tn-tc-library] a').data('association-insertion-node', @$link.closest('.tn-tc-row'))
+    $('[data-tn-tc-library] a').data('association-insertion-method', method)
+
+module.exports = Library

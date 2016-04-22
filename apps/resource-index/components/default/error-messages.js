@@ -1,3 +1,5 @@
+import React from 'react';
+
 window.ErrorMessages = ({ errors }) => {
   if (!errors) {
     return <div></div>;

@@ -6,6 +6,7 @@ class DefaultRecord extends React.Component {
     const {
       RecordTitle, RecordActions, RecordExpandedContent
     } = this.props.childComponents;
+
     const { isExpanded, onToggleExpand } = this.props;
     const classnames = classNames({
       'record': true,

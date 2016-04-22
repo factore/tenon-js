@@ -1,4 +1,4 @@
-Tenon.features.Editor =
+module.exports =
   reinitInline: ->
     for key in Object.keys(CKEDITOR.instances)
       instance = CKEDITOR.instances[key]

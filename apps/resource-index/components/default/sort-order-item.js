@@ -1,3 +1,5 @@
+import React from 'react';
+
 Tenon.RI.DefaultSortOrderItem = (props) => {
   const classNames = ['dropdown__item'];
   const { title, order } = props;

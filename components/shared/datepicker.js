@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
 /* global $ */
 // How to get the pickadate to mount correcty in React.js component
 // requires jQuery and pickadate.js (https://github.com/amsul/pickadate.js/)
@@ -45,4 +46,4 @@ class Datepicker extends React.Component {
   }
 }
 
-window.Datepicker = Datepicker;
+module.exports = Datepicker;

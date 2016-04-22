@@ -1,6 +1,6 @@
-import { Component } from 'react';
+import React from 'react';
 
-export default class StandaloneList extends Component {
+export default class StandaloneList extends React.Component {
   componentWillMount() {
     this.props.actions.updateConfig({
       manageQueryString: false,

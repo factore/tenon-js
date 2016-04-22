@@ -1,4 +1,4 @@
-$ = require('jquery')
+
 imagesLoaded = require('imagesloaded')
 _ = require('lodash')
 

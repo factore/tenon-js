@@ -1,4 +1,4 @@
-$ = require('jquery')
+
 
 # This is the TenonContent Editor, not the base Editor
 class Editor
@@ -10,7 +10,7 @@ class Editor
       @_updateButtons($(div))
 
     CKEDITOR.on 'instanceReady', ->
-      Tenon.features.Editor.watchChanges()
+      require('tenon/features/editor').watchChanges()
 
   _rowInserted: (e) =>
     # Reactivate Editor

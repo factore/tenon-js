@@ -1,4 +1,4 @@
-$ = require('jquery')
+
 
 class ColumnSizing
   constructor: (@$container) ->

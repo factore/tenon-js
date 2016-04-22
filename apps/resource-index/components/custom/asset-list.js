@@ -1,3 +1,6 @@
+import React from 'react';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+
 Tenon.RI.AssetList = (props) => {
   const { Record, LoadMoreButton }  = props.childComponents;
   const { deleteRecord, updateRecord, toggleExpandedRecord } = props.handlers;
@@ -15,7 +18,7 @@ Tenon.RI.AssetList = (props) => {
       </li>
     );
   } else {
-    output = records.map((record, i) => {
+    output = records.map((record) => {
       return (
         <Record
           { ...props }
@@ -34,7 +37,7 @@ Tenon.RI.AssetList = (props) => {
       <p>
         <input
           type="text"
-          value={query.q}
+          value={query.q || ''}
           onChange={(e) => updateQuery({ q: e.target.value, page: 1 })}
           placeholder="Search Assets" />
       </p>

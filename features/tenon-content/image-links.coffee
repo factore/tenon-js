@@ -1,4 +1,4 @@
-$ = require('jquery')
+
 
 class ImageLinks
   constructor: (@$container) ->

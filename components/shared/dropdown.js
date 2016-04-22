@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-/* global DropdownButton */
-/* global DropdownMenu */
+import DropdownButton from 'tenon/components/shared/dropdown-button';
+import DropdownMenu from 'tenon/components/shared/dropdown-menu';
 
 class Dropdown extends React.Component {
   constructor(props) {
@@ -76,4 +76,4 @@ class Dropdown extends React.Component {
   }
 }
 
-window.Dropdown = Dropdown;
+module.exports = Dropdown;

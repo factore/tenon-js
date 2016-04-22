@@ -1,3 +1,5 @@
+import React from 'react';
+
 Tenon.RI.DefaultFilterOverlay = (props) => {
   return (
     <div className="toolbar toolbar--filter toolbar--overlay-z2">

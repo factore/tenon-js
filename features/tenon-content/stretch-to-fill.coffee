@@ -1,4 +1,4 @@
-$ = require('jquery')
+
 
 class StretchToFill
   stretchClass: 'tn-tc-fields__image-container--stretch'

@@ -1,4 +1,6 @@
-window.SelectField = (props) => {
+import React from 'react';
+
+module.exports = (props) => {
   return (
     <div className="input-block">
       <label className="input-block__label">{props.label}</label>

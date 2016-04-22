@@ -1,9 +1,12 @@
-class Tenon.features.AssetUploader
+React = require('react');
+ReactDOM = require('react-dom');
+AssetProgress = require('tenon/components/shared/asset-progress');
+
+class AssetUploader
   constructor: (@doneFunction) ->
-    @$progress = $('.progress-container')
+    @$progress = $('.progress-container:visible')
     @$list = $('#assets.record-grid')
     @titleCounter = 1
-    @doneFunction ||= @_drawAsset
     @_allowEsc()
     $(document).on('click', '.upload', @_blockEsc)
     $(document).on('keyup', @_keyUp)
@@ -34,15 +37,6 @@ class Tenon.features.AssetUploader
     @allowEsc = true
     return true
 
-  _drawAsset: (e, data) =>
-    @_progressBarStatus(data.context, 'success')
-    @$list.prepend(JST["tenon/templates/assets/asset_row"](asset : data.result))
-    setTimeout () =>
-      @$list.find('.hidden').removeClass('hidden')
-      @$list.find('.info').hide()
-      data.context.addClass('hidden')
-    , 1000
-
   _add: (e, data) =>
     @_updateTitle()
     @_drawProgess(e, data)
@@ -68,13 +62,16 @@ class Tenon.features.AssetUploader
     @titleCounter = 1
 
   _drawProgess: (e, data) =>
-    data.context = $(JST["tenon/templates/assets/asset_progress"](file : data.files[0]))
-    @$progress.append(data.context)
+    ReactDOM.render(
+      React.createElement(AssetProgress, file: data.files[0]),
+      @$progress[0]
+    )
+    data.context = @$progress
     data.submit()
 
   _updateProgess: (e, data) ->
     if data.context
-      data.context.removeClass('hidden')
+      console.log(data.context)
       currentProgress = parseInt(data.loaded / data.total * 100, 10)
       data.context.find('.progress__bar').css('width', currentProgress + '%')
 
@@ -86,4 +83,4 @@ class Tenon.features.AssetUploader
   _errorMessage: (e, data) =>
     @_progressBarStatus(data.context, 'danger')
 
-
+module.exports = AssetUploader

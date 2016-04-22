@@ -1,4 +1,4 @@
-$ = require('jquery')
+
 
 class BottombarToggler
   constructor: (@$container) ->

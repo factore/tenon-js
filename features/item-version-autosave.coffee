@@ -1,4 +1,4 @@
-$ = require('jquery')
+
 _ = require('lodash')
 
 class ItemVersionAutosave

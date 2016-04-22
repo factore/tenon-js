@@ -11,7 +11,7 @@ Sortable = require('./sortable')
 StretchToFill = require('./stretch-to-fill')
 WrappedSizing = require('./wrapped-sizing')
 
-$ = require('jquery')
+
 
 class Base
   constructor: ->

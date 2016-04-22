@@ -1,5 +1,5 @@
-import 'babel-core/polyfill';
-import { Component } from 'react';
+import 'babel-polyfill';
+import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import Wrapper from './wrapper';
 import StandaloneList from './standalone-list';
@@ -14,7 +14,7 @@ export default class Root extends Component {
   render() {
     return (
       <Provider store={this.store}>
-        {() => <Wrapper {...this.props}><StandaloneList /></Wrapper>}
+        <Wrapper {...this.props}><StandaloneList /></Wrapper>
       </Provider>
     );
   }

@@ -1,4 +1,4 @@
-$ = require('jquery')
+
 dragula = require('react-dragula');
 
 class Sortable

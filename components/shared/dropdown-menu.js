@@ -1,6 +1,6 @@
 import React from 'react';
-/* global ReactPortal */
-/* global DropdownHelper */
+import ReactPortal from 'react-portal';
+import DropdownHelper from 'tenon/features/dropdown-helper';
 import classNames from 'classnames';
 
 class DropdownMenu extends React.Component {
@@ -67,4 +67,4 @@ class DropdownMenu extends React.Component {
   }
 }
 
-window.DropdownMenu = DropdownMenu;
+module.exports = DropdownMenu;

@@ -1,5 +1,3 @@
-import $ from 'jquery';
-
 export default class Tabs {
   constructor(opts = {}) {
     this.opts = { ...Tabs.defaultOptions, ...opts };

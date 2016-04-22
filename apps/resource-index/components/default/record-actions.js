@@ -1,6 +1,7 @@
-/* global Dropdown */
-/* global DropdownButton */
-/* global DropdownMenu */
+import Dropdown from 'tenon/components/shared/dropdown';
+import DropdownButton from 'tenon/components/shared/dropdown-button';
+import DropdownMenu from 'tenon/components/shared/dropdown-menu';
+import React from 'react';
 
 Tenon.RI.DefaultRecordActions = (props) => {
   const { record, onDelete, editWithModal } = props;

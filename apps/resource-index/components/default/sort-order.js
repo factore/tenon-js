@@ -1,4 +1,7 @@
 import React from 'react';
+import Dropdown from 'tenon/components/shared/dropdown';
+import DropdownButton from 'tenon/components/shared/dropdown-button';
+import DropdownMenu from 'tenon/components/shared/dropdown-menu';
 
 Tenon.RI.DefaultSortOrder = (props) => {
   if (!props.orderOptions || props.orderOptions.length === 0) {

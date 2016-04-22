@@ -2,6 +2,7 @@ import fetch from 'isomorphic-fetch';
 import * as types from '../constants/action-types';
 import { fetchRecords } from './list';
 import { isEmpty } from 'lodash';
+import Flash from 'tenon/features/flash';
 
 const jsonDefaults = {
   credentials: 'same-origin',
@@ -67,7 +68,7 @@ const startUpdateRecord = (record, payload) => {
 };
 
 const completeUpdateRecord = (record) => {
-  window.Tenon.features.Flash.draw('Saved successfully.');
+  Flash.draw('Saved successfully.');
   return {
     type: types.RECORD_UPDATED,
     record: record
@@ -135,7 +136,7 @@ const startCreateRecord = (record) => {
 };
 
 const completeCreateRecord = (record) => {
-  window.Tenon.features.Flash.draw('Saved successfully.');
+  Flash.draw('Saved successfully.');
   return {
     type: types.RECORD_CREATED,
     record: record

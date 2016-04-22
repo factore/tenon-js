@@ -1,12 +1,15 @@
-class Tenon.features.AssetAttachment
+ModalWindows = require('tenon/features/modal-windows')
+AssetUploader = require('tenon/features/asset-uploader')
+
+class AssetAttachment
   constructor: (@$browseButton, @$container) ->
     @$assetField = @_getAssetField()
     @_setupAssetUploading()
     @$container.on('assetPicked', @_setFields)
-    ReactRailsUJS.mountComponents('#pick-asset')
+    window.ReactRailsUJS.mountComponents('#pick-asset')
 
   _setupAssetUploading: =>
-    @uploader = new Tenon.features.AssetUploader(@_uploadComplete)
+    @uploader = new AssetUploader(@_uploadComplete)
     @uploader.initialize('#new_asset')
 
   _uploadComplete: (e, data) =>
@@ -17,7 +20,7 @@ class Tenon.features.AssetAttachment
       mediumPath: asset.style_urls.medium,
       filename: asset.display_name
     })
-    Tenon.features.ModalWindows.closeModals()
+    ModalWindows.closeModals()
 
   _setFields: (e, data) =>
     @$assetField.find('[data-asset-id-field]').val(data.id)
@@ -25,10 +28,12 @@ class Tenon.features.AssetAttachment
       .html("<img src='#{data.thumbnailPath}' />")
     @$assetField.find('[data-asset-info]').html(data.filename)
     @$assetField.find('[data-asset-remove]').show()
-    Tenon.features.ModalWindows.closeModals()
+    ModalWindows.closeModals()
 
   _getAssetField: =>
     if @$browseButton.data('asset-field')
       $(@$browseButton.data('asset-field'))
     else
       @$browseButton.closest('.asset-field, .tn-tc-asset-field')
+
+module.exports = AssetAttachment;

@@ -1,3 +1,5 @@
+import React from 'react';
+
 Tenon.RI.DefaultModalAddButton = (props) => {
   const { newRecordInModal } = props.actions;
 

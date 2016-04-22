@@ -1,4 +1,4 @@
-$ = require('jquery')
+
 
 class AssetDetachment
   constructor: ->

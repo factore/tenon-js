@@ -1,4 +1,4 @@
-$ = require('jquery')
+
 AssetAttachment = require('./asset-attachment')
 
 class MultipleAssetAttachment extends AssetAttachment

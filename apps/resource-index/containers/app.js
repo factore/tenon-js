@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 
-export default class App extends Component {
+export default class App extends React.Component {
   componentWillMount() {
     this.props.actions.updateConfig({
       baseUri: this.props.recordsPath,
@@ -23,7 +23,6 @@ export default class App extends Component {
       'filter-drawer-open': filterDrawerOpen,
       'modal-form-open': modalFormOpen
     });
-
 
     return (
       <div className={outerClassNames}>

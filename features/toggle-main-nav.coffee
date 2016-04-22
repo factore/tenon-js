@@ -1,5 +1,3 @@
-$ = require('jquery')
-
 class ToggleMainNav
   constructor: ->
     @hasStorage = typeof(Storage) != "undefined"

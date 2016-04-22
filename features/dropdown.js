@@ -1,4 +1,4 @@
-import $ from 'jquery';
+
 import DropdownHelper from './dropdown-helper';
 
 export default class Dropdown {

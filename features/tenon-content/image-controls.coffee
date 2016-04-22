@@ -1,4 +1,4 @@
-$ = require('jquery')
+
 
 class ImageControls
   constructor: ($container) ->

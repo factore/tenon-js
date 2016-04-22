@@ -35,4 +35,4 @@ class CheckBoxField extends React.Component {
   }
 }
 
-window.CheckBoxField = CheckBoxField;
+module.exports = CheckBoxField;

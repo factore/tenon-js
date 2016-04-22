@@ -71,9 +71,9 @@ class ModalForm extends React.Component {
             <div className="modal__content">
               <div
                 className={baseErrors.length && 'input-block' }>
-                {baseErrors.map((error) => {
+                {baseErrors.map((error, idx) => {
                   return (
-                    <label className="input-block__error-message">
+                    <label key={idx} className="input-block__error-message">
                       {error}
                     </label>
                   );

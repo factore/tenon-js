@@ -1,8 +1,8 @@
 // Vendor
 require('./querystring.underscore');
 require('./inflection.underscore');
+require('./react-ujs');
 window._ = require('lodash');
-import $ from 'jquery';
 
 // Resources
 import AssetCropping from './features/asset-cropping';
@@ -34,9 +34,9 @@ window.Tenon = {
   RI: {},
   init: function() {
     // init pickadate
-    // $('[data-behavior=datepicker]').pickadate();
-    // $('[data-behavior=timepicker]').pickatime();
-
+    $('[data-behavior=datepicker]').pickadate();
+    $('[data-behavior=timepicker]').pickatime();
+    window.ReactRailsUJS.mountComponents();
     new AssetCropping();
     new AssetDetachment();
     new CocoonHooks();
@@ -54,11 +54,14 @@ window.Tenon = {
     new Tabs();
     new TenonContentBase();
     new ToggleMainNav();
+    window.ReactRailsUJS.mountComponents();
   }
 };
 
-Tenon.ResourceIndexRoot = require('./apps/resource-index/containers/root').default;
+Tenon.modalHandlers = {
+  TenonContentLibrary: require('./modal-handlers/tenon-content-library'),
+  AssetAttachment: require('./modal-handlers/asset-attachment')
+};
 
-// Components
-// import ResourceIndexRoot from './apps/resource-index/containers/root';
-// import StandaloneList from './apps/resource-index/containers/standalone-list-root';
+Tenon.RI.Root = require('./apps/resource-index/containers/root').default;
+Tenon.RI.StandaloneList = require('./apps/resource-index/containers/standalone-list-root').default;

@@ -1,4 +1,6 @@
-window.DropdownButton = (props) => {
+import React from 'react';
+
+module.exports = (props) => {
   const className = props.className || 'dropdown-button';
 
   return (

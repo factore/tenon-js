@@ -1,4 +1,7 @@
-window.DatepickerField = (props) => {
+import React from 'react';
+import Datepicker from './datepicker';
+
+module.exports = (props) => {
   return (
     <div className="input-block">
       <label className="input-block__label">{props.label}</label>

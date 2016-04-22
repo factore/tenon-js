@@ -1,9 +1,14 @@
-$ = require('jquery')
+
 
 class ModalWindows
   @closeModals: ->
     @clearBody()
-    $('.modal:not([data-react-provided])').removeClass('modal--is-active')
+    $.each $('.modal:not([data-react-provided])'), (i, el) ->
+      $el = $(el)
+      $el.removeClass('modal--is-active')
+      if $el.data('modal-remove-on-close')
+        setTimeout((-> $el.remove()), 250)
+
 
   @clearBody: ->
     $('.modal-overlay:not([data-react-provided])').removeClass('modal-overlay--is-active')
@@ -25,8 +30,10 @@ class ModalWindows
       '[data-model-content]',
       '[data-keyboard]'
     ]
-    $(document).on('click', tags.join(', '), @launchFromLink)
-    $(document).on('click', '.modal-overlay, [data-modal-close]', @closeModals)
+    $(document).off('click.tn:modal-on', tags.join(', '))
+    $(document).off('click.tn:modal-on', '.modal-overlay, [data-modal-close]')
+    $(document).on('click.tn:modal-on', tags.join(', '), @launchFromLink)
+    $(document).on('click.tn:modal-off', '.modal-overlay, [data-modal-close]', @closeModals)
     $('body').on('keyup', (e) => @closeModals() if e.which == 27)
   # Opts:
   #   $link: if launched by data tags, the link that was clicked
@@ -61,7 +68,7 @@ class ModalWindows
     @_chooseStrategy()
 
   closeModals: ->
-    Tenon.features.ModalWindows.closeModals()
+    ModalWindows.closeModals()
 
   _chooseStrategy: =>
     @_launchWithUrl() if @opts.remote
@@ -70,7 +77,6 @@ class ModalWindows
 
   _launchWithUrl: (e) =>
     @remote = true
-    Tenon.$genericLoader.show()
     $.ajax
       url: @opts.href
       dataType: 'html'
@@ -92,7 +98,6 @@ class ModalWindows
     @_openInModal($el)
 
   _openInModal: (el) =>
-    Tenon.$genericLoader.hide()
     @$el = $(el)
     @$modalElement = @_getModalElement()
     @_drawAndDisplayModal()
@@ -114,18 +119,17 @@ class ModalWindows
     @$el.find('.modal__content').length > 0
 
   _drawAndDisplayModal: =>
+    if @remote
+      @$modalElement.data('modal-remove-on-close', true)
     @$modalElement.appendTo('body')
-    Tenon.features.ModalWindows.prepBodyForModal()
+    ModalWindows.prepBodyForModal()
     setTimeout( =>
       @$modalElement.addClass('modal--is-active')
     , 0)
 
   _runShownHandler: =>
     if @opts.handler?.length
-      parts = @opts.handler.split('.')
-      method = window
-      $(parts).each (i, part) -> method = method[part]
-      new method(@opts.$link, @$el, @$modalElement)
+      new Tenon.modalHandlers[@opts.handler](@opts.$link, @$el, @$modalElement)
 
     # Default shown action
     @_focusFirstField()

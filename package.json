@@ -1,6 +1,6 @@
 {
   "name": "tenon",
-  "version": "2.0.0",
+  "version": "2.0.4",
   "description": "Front-end code required to run Tenon 2.x",
   "main": "tenon.js",
   "scripts": {
@@ -8,16 +8,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/factore/tenon-scripts.git"
+    "url": "git+https://github.com/factore/tenon-js.git"
   },
   "author": "factor[e] design initiative",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/factore/tenon-scripts/issues"
+    "url": "https://github.com/factore/tenon-js/issues"
   },
-  "homepage": "https://github.com/factore/tenon-scripts#readme",
+  "homepage": "https://github.com/factore/tenon-js#readme",
   "dependencies": {
-    "babel-core": "^5.8.29",
+    "babel": "^6.5.2",
+    "babel-core": "^6.7.7",
+    "babel-polyfill": "^6.7.4",
     "classnames": "^2.2.3",
     "cookies-js": "^1.2.2",
     "es6-promise": "^3.0.2",
@@ -27,9 +29,9 @@
     "jquery": "^2.2.3",
     "lodash": "^3.10.1",
     "pluralize": "^1.2.1",
-    "react": "^15.0",
-    "react-addons-css-transition-group": "^15.0",
-    "react-dom": "^15.0",
+    "react": "^15.0.1",
+    "react-addons-css-transition-group": "^15.0.1",
+    "react-dom": "^15.0.1",
     "react-dragula": "^1.1.15",
     "react-portal": "^2.1.0",
     "react-redux": "^4.4.5",

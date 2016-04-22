@@ -1,6 +1,7 @@
+import React from 'react';
 import classNames from 'classnames';
 
-window.TextField = (props) => {
+module.exports = (props) => {
   const { label, type, errors } = props;
   const errorClassNames = classNames({
     'input-block__field-with-errors': errors
