@@ -1,6 +1,6 @@
 {
   "name": "tenon",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "description": "Front-end code required to run Tenon 2.x",
   "main": "tenon.js",
   "scripts": {
@@ -17,7 +17,6 @@
   },
   "homepage": "https://github.com/factore/tenon-js#readme",
   "dependencies": {
-    "babel": "^6.5.2",
     "babel-core": "^6.7.7",
     "babel-polyfill": "^6.7.4",
     "classnames": "^2.2.3",
