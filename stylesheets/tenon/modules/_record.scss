@@ -12,6 +12,11 @@
   }
 }
 
+.record--flat {
+  @extend %z-depth-0;
+  border-bottom: 1px solid $light-border-color;
+}
+
 .record__thumbnail {
   display: block;
   position: relative;

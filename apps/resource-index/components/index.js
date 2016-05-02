@@ -21,3 +21,4 @@ require('./default/sort-order');
 require('./default/toolbar');
 require('./custom/asset-list');
 require('./custom/asset-record');
+require('./custom/item-version-record');

@@ -1,16 +1,18 @@
-class Tenon.features.NewItemVersionHandler
+URI = require('urijs')
+ModalWindows = require('tenon/features/modal-windows')
+
+class NewItemVersion
   constructor: (@$link, @$el, @$template) ->
-    @$itemForm = @$link.closest('form')
-    @$versionForm = @$template.find('form')
-    @$versionForm.on('submit', @submitItemVersion)
+    @$itemForm = $('form[data-version-create-path]')
+    @$template.on('submit', @submitItemVersion)
 
   submitItemVersion: (e) =>
     e.preventDefault()
     jqxhr = $.ajax
-      url: @$versionForm.attr('action')
+      url: @$template.attr('action')
       data: @_formData()
       method: 'POST'
-    jqxhr.done(@$template.modal('hide'))
+    jqxhr.done(ModalWindows.closeModals())
     jqxhr.fail(@_failure())
 
   _formData: =>
@@ -23,10 +25,12 @@ class Tenon.features.NewItemVersionHandler
       else
         itemFormData[@.name] = "1"
 
-    versionFormData = URI("?" + @$versionForm.serialize()).query(true)
+    versionFormData = URI("?" + @$template.serialize()).query(true)
     delete(itemFormData._method)
     $.extend(itemFormData, versionFormData)
 
   _failure: =>
     msg = "Failed to save draft."
-    @$versionForm.prepend(msg)
+    @$template.prepend(msg)
+
+module.exports = NewItemVersion

@@ -98,25 +98,9 @@ class ModalWindows
     @_openInModal($el)
 
   _openInModal: (el) =>
-    @$el = $(el)
-    @$modalElement = @_getModalElement()
+    @$modalElement = $(el)
     @_drawAndDisplayModal()
     @_runShownHandler()
-
-  _getModalElement: =>
-    if @_isBodyProvided()
-      @$el
-    else
-      $(@_setupTemplate())
-
-  _setupTemplate: =>
-    $template = $(JST['tenon/templates/modal']())
-    $template.find('.modal__content').append(@$el)
-    $template
-
-
-  _isBodyProvided: =>
-    @$el.find('.modal__content').length > 0
 
   _drawAndDisplayModal: =>
     if @remote
@@ -129,7 +113,11 @@ class ModalWindows
 
   _runShownHandler: =>
     if @opts.handler?.length
-      new Tenon.modalHandlers[@opts.handler](@opts.$link, @$el, @$modalElement)
+      new Tenon.modalHandlers[@opts.handler](
+        @opts.$link,
+        @$modalElement,
+        @$modalElement
+      )
 
     # Default shown action
     @_focusFirstField()

@@ -35,23 +35,18 @@ export default class Dropdown {
       $(document).off('click.DropdownOut');
     } else {
       this._placeDropdown($origin, options);
-      $(document).on('click.DropdownOut', (ev) => {
-        this.onClickOut(ev, $origin);
-      });
     }
   }
 
-  onClickOut(e, $origin) {
-    const $activates = $origin.next('.dropdown');
+  onClickOut(e, $origin, $activates) {
     const ignore = [
       $origin,
       $origin.find('*'),
       $activates,
-      $activates.find('*')
+      $activates.find(':not([data-dropdown-dismiss])')
     ];
 
-    e.preventDefault();
-    if (!_.find(ignore, (el) => el.is(e.target))) {
+    if (!_.find(ignore, (el) => el.is(e.currentTarget))) {
       $origin.trigger('click.DropdownOrigin');
     }
   }
@@ -100,6 +95,11 @@ export default class Dropdown {
 
     // Show dropdown
     DropdownHelper.animateIn($activates, options.inDuration);
+
+    // Watch for outerclick
+    $(document).on('click.DropdownOut', (ev) => {
+      this.onClickOut(ev, $origin, $activates);
+    });
   }
 
   _optionsFromData($origin) {

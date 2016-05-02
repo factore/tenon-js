@@ -42,6 +42,12 @@
   }
 }
 
+.modal--thin {
+  @include bp-md {
+    max-width: 450px;
+  }
+}
+
 .modal__content {
   padding: 24px;
 }

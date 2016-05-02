@@ -1,0 +1,29 @@
+.note {
+  @extend %z-depth-1;
+  @extend %font-smaller;
+  position: relative;
+  margin-bottom: $default-spacing;
+  border-radius: 4px;
+  background-color: $white;
+  padding: ($default-spacing / 2) $default-spacing;
+}
+
+.note__icon {
+  @extend %material-icon;
+  @include transform(translateY(-50%));
+  @include font-size(36);
+  position: absolute;
+  top: 50%;
+  left: $default-spacing;
+  color: $secondary-color;
+}
+
+.note__text {
+  padding-left: 60px;
+}
+
+.note__secondary {
+  @extend %font-smallest;
+  margin-top: $default-spacing / 2;
+  color: lighten($light-fg-color, 20%);
+}

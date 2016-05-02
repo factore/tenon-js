@@ -60,7 +60,9 @@ window.Tenon = {
 
 Tenon.modalHandlers = {
   TenonContentLibrary: require('./modal-handlers/tenon-content-library'),
-  AssetAttachment: require('./modal-handlers/asset-attachment')
+  AssetAttachment: require('./modal-handlers/asset-attachment'),
+  NewItemVersionHandler: require('./modal-handlers/new-item-version'),
+  ItemVersionIndexHandler: require('./modal-handlers/item-version-index')
 };
 
 Tenon.RI.Root = require('./apps/resource-index/containers/root').default;

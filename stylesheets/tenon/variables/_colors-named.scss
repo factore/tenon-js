@@ -76,9 +76,10 @@ $main-nav-bg-color: lighten($grey, 10%);
 $main-nav-fg-color: $black;
 $main-nav-hover-color: $grey;
 $main-nav-icon-color: $secondary-color;
-$app-info-fg-color: $white;
+$app-info-fg-color: $primary-fg-color;
+$app-info-icon-color: $secondary-color;
 $app-info-hover-color: rgba($primary-color, .4);
-$app-info-bg-color: darken($grey, 25%);
+$app-info-bg-color: $white;
 
 // Account Avatar
 $avatar-bg-color: $white;
