@@ -1,3 +1,6 @@
+Flash = require('tenon/features/flash')
+numberToWords = require('tenon/features/number-to-words').default
+
 window.ClientSideValidations.formBuilders['Tenon::FormBuilder'] = {
   add: (element, settings, message) ->
     form = $(element[0].form)
@@ -48,4 +51,4 @@ window.ClientSideValidations.callbacks.form.fail = ($el, event) ->
       #{actionText}
     </a>
   """
-  Tenon.features.Flash.draw(msg, action)
+  Flash.draw(msg, action)

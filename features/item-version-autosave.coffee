@@ -1,4 +1,4 @@
-
+URI = require('urijs')
 _ = require('lodash')
 
 class ItemVersionAutosave

@@ -23,6 +23,9 @@ import Tabs from './features/tabs';
 import TenonContentBase from './features/tenon-content/base';
 import ToggleMainNav from './features/toggle-main-nav';
 
+// Load the custom validator
+require('./features/rails-validations');
+
 $.ajaxSetup({
   dataType: 'json',
   'beforeSend' : function(xhr) {
