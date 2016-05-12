@@ -1,6 +1,6 @@
 {
   "name": "tenon",
-  "version": "2.0.9",
+  "version": "2.0.10",
   "description": "Front-end code required to run Tenon 2.x",
   "main": "tenon.js",
   "scripts": {
