@@ -1,13 +1,18 @@
-
+BaseEditor = require('tenon/features/editor')
 
 # This is the TenonContent Editor, not the base Editor
 class Editor
   constructor: ->
     $(document).on('cocoon:after-insert', '.tn-tc__rows', @_rowInserted)
     $(document).on('cocoon:after-remove', '.tn-tc__rows', @_rowRemoved)
-    $(document).on('input keypress paste change', '.editable-text', @_contentUpdated)
-    for div in $('.tn-tc')
-      @_updateButtons($(div))
+    $(document).on(
+      'input keypress paste change',
+      '.editable-text',
+      @_contentUpdated
+    )
+
+    @_updateButtons($(div)) for div in $('.tn-tc')
+
 
     CKEDITOR.on 'instanceReady', ->
       require('tenon/features/editor').watchChanges()
@@ -34,6 +39,6 @@ class Editor
       $wrap.find('.tn-tc-pop-out').show()
 
   _redrawCkeditor: =>
-    Tenon.features.Editor.reinitInline()
+    BaseEditor.reinitInline()
 
 module.exports = Editor

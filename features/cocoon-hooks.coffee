@@ -1,4 +1,5 @@
-;
+TenonContentBase = require('tenon/features/tenon-content/base')
+Editor = require('tenon/features/editor')
 
 class CocoonHooks
   constructor: ->
@@ -7,10 +8,10 @@ class CocoonHooks
   afterInsert: (e, insertedItem) =>
     @$insertedItem = $(insertedItem)
     @_checkTenonContent()
-    Tenon.features.Editor.reinitInline()
+    Editor.reinitInline()
 
   _checkTenonContent: ->
     if @$insertedItem.find('.tn-tc')
-      new Tenon.features.tenonContent.Base
+      new TenonContentBase
 
 module.exports = CocoonHooks

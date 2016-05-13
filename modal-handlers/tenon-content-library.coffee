@@ -23,7 +23,7 @@ class Library
 
   _setToInsertInitialRow: =>
     node = @$link.closest('.tn-tc').find('.tn-tc__rows')
-    $('[data-tn-tc-library] a').data('association-insertion-node', node)
+    $('[data-tn-tc-library] a').data('association-insertion-node', -> node)
     $('[data-tn-tc-library] a').data('association-insertion-method', 'append')
 
   _setToInsertByData: =>
@@ -37,8 +37,9 @@ class Library
 
   _setToInsertRelative: =>
     method = @$link.data('tn-tc-insert')
-    console.log(method)
-    $('[data-tn-tc-library] a').data('association-insertion-node', @$link.closest('.tn-tc-row'))
+    $('[data-tn-tc-library] a').data('association-insertion-node', =>
+      @$link.closest('.tn-tc-row')
+    )
     $('[data-tn-tc-library] a').data('association-insertion-method', method)
 
 module.exports = Library

@@ -71,7 +71,6 @@ class AssetUploader
 
   _updateProgess: (e, data) ->
     if data.context
-      console.log(data.context)
       currentProgress = parseInt(data.loaded / data.total * 100, 10)
       data.context.find('.progress__bar').css('width', currentProgress + '%')
 

@@ -32,14 +32,6 @@ class AssetRecord extends React.Component {
           <div className="record__title">
             {display_name}
           </div>
-
-          <div className="record__actions">
-            <a
-              onClick={(e) => this._placeAsset(e)}
-              href="#!" className="action-text">
-                Choose
-              </a>
-          </div>
         </div>
       </li>
     );

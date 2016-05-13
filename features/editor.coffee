@@ -2,7 +2,9 @@ module.exports =
   reinitInline: ->
     for key in Object.keys(CKEDITOR.instances)
       instance = CKEDITOR.instances[key]
-      instance.destroy() if instance?.editable()?.isInline()
+      instance.destroy(true) if instance?.editable()?.isInline()
+      if CKEDITOR.instances[key]
+        delete CKEDITOR.instances[key]
     CKEDITOR.inlineAll()
 
   watchChanges: ->

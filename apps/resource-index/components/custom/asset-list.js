@@ -10,13 +10,7 @@ Tenon.RI.AssetList = (props) => {
   let output;
 
   if (records.length === 0 && !isFetching) {
-    output = (
-      <li className="record">
-        <div className="record__details">
-          <p className="record__title">No {props.title.toLowerCase()} found.</p>
-        </div>
-      </li>
-    );
+    output = <li>No {props.title.toLowerCase()} found.</li>;
   } else {
     output = records.map((record) => {
       return (
@@ -34,13 +28,13 @@ Tenon.RI.AssetList = (props) => {
 
   return (
     <div className="record-list">
-      <p>
+      <div className="asset-search-field">
         <input
           type="text"
           value={query.q || ''}
           onChange={(e) => updateQuery({ q: e.target.value, page: 1 })}
-          placeholder="Search Assets" />
-      </p>
+          placeholder="Search" />
+      </div>
 
       <ul>
         <ReactCSSTransitionGroup
