@@ -9,7 +9,7 @@
   .filter-drawer-open &,
   .main-nav-drawer-open &,
   .main-nav-drawer-pref-open & {
-    @include bp-md {
+    @include bp-lg {
       left: $main-nav-width;
       width: calc(100% - #{$main-nav-width});
     }

@@ -1,5 +1,6 @@
 class ToggleMainNav
   constructor: ->
+    @offCanvasNavThreshold = 1024
     @hasStorage = typeof(Storage) != "undefined"
     @_checkStorage() if @hasStorage
 
@@ -27,7 +28,7 @@ class ToggleMainNav
 
   _checkStorage: ->
     navIsOpen = localStorage.getItem('main-nav-drawer-open')
-    if $(window).width() >= 768
+    if $(window).width() >= @offCanvasNavThreshold
       $('body').addClass('main-nav-drawer-pref-open') if navIsOpen
 
 module.exports = ToggleMainNav

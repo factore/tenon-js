@@ -8,7 +8,7 @@
   height: 100%;
   overflow: auto;
 
-  @include bp-md {
+  @include bp-lg {
     left: -$main-nav-width;
     border-right: 1px solid $light-border-color;
     box-shadow: inset -2px 1px 10px -6px $inset-shadow-color;
