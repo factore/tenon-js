@@ -46,6 +46,9 @@ class Wrapper extends Component {
   constructor(props) {
     super(props);
     this._setupHandlers();
+  }
+
+  componentWillMount() {
     this._setupChildComponents();
   }
 
