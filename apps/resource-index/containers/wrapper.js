@@ -46,6 +46,9 @@ class Wrapper extends Component {
   constructor(props) {
     super(props);
     this._setupHandlers();
+    this.state = {
+      childComponents: {}
+    };
   }
 
   componentWillMount() {
@@ -65,16 +68,19 @@ class Wrapper extends Component {
   }
 
   _setupChildComponents() {
+    let component;
+    const components = {};
     const names = {
       ...DEFAULT_CHILD_COMPONENT_NAMES,
       ...this.props.childComponentNames
     };
-    let component;
 
     Object.keys(names).forEach((key) => {
       component = resolvePath(names[key], Tenon.RI);
-      this.props.childComponents[key] = component;
+      components[key] = component;
     });
+
+    this.setState({ childComponents: components });
   }
 
   _deleteRecord(e, record) {
@@ -134,7 +140,10 @@ class Wrapper extends Component {
   render() {
     const { children } = this.props;
     const childrenWithProps = React.Children.map(children, (child) => {
-      return React.cloneElement(child, { ...this.props });
+      return React.cloneElement(child, {
+        ...this.props,
+        childComponents: this.state.childComponents
+      });
     });
 
     return (
@@ -147,7 +156,6 @@ class Wrapper extends Component {
 
 Wrapper.defaultProps = {
   childComponentNames: {},
-  childComponents: {},
   handlers: {}
 };
 
