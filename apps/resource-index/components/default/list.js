@@ -57,7 +57,7 @@ class List extends React.Component {
               <Record
                 { ...this.props }
                 record={record}
-                key={i}
+                key={record.id || i}
                 isExpanded={expandedRecordIds.indexOf(record.id) !== -1}
                 onDelete={(e) => deleteRecord(e, record)}
                 onUpdate={(e, payload) => updateRecord(e, record, payload)}
