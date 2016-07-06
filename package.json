@@ -1,6 +1,6 @@
 {
   "name": "tenon",
-  "version": "2.0.15",
+  "version": "2.0.16",
   "description": "Front-end code required to run Tenon 2.x",
   "main": "tenon.js",
   "scripts": {
@@ -16,6 +16,9 @@
     "url": "https://github.com/factore/tenon-js/issues"
   },
   "homepage": "https://github.com/factore/tenon-js#readme",
+  "peerDependencies": {
+    "react": ">=15.0.0"
+  },
   "dependencies": {
     "babel-core": "^6.7.7",
     "babel-polyfill": "^6.7.4",
@@ -27,7 +30,6 @@
     "isomorphic-fetch": "^2.2.0",
     "lodash": "^3.10.1",
     "pluralize": "^1.2.1",
-    "react": "^15.0.1",
     "react-addons-css-transition-group": "^15.0.1",
     "react-dom": "^15.0.1",
     "react-dragula": "^1.1.15",
