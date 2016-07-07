@@ -11,6 +11,7 @@ class Component extends React.Component {
     const { updateQuery } = this.props.actions;
     const { onFocus, onBlur } = this.props;
     const q = this.props.data.query.q;
+    const placeholder = this.props.searchPlaceholder || 'Search';
 
     return (
       <section className={'search-content ' + this.props.className}>
@@ -23,7 +24,7 @@ class Component extends React.Component {
           onFocus={onFocus}
           onBlur={onBlur}
           className="search-content__field"
-          placeholder="Search"
+          placeholder={placeholder}
           title="Search" />
       </section>
     );
