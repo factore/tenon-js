@@ -31,7 +31,7 @@ export const fetchRecords = (append = false) => {
   };
 };
 
-export const reorderRecords = (ids) => {
+export const reorderRecords = (ids, msg = 'Saved successfully.') => {
   return (dispatch, getState) => {
     const state = getState().data;
 
@@ -44,7 +44,7 @@ export const reorderRecords = (ids) => {
       method: 'POST',
       body: JSON.stringify({ ids: ids })
     })
-    .then(() => Flash.draw('Saved successfully.'));
+    .then(() => Flash.draw(msg));
   };
 };
 

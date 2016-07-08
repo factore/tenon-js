@@ -67,8 +67,8 @@ const startUpdateRecord = (record, payload) => {
   };
 };
 
-const completeUpdateRecord = (record) => {
-  Flash.draw('Saved successfully.');
+const completeUpdateRecord = (record, flashMsg) => {
+  Flash.draw(flashMsg);
   return {
     type: types.RECORD_UPDATED,
     record: record
@@ -82,7 +82,9 @@ const failUpdateRecord = (record) => {
   };
 };
 
-export const updateRecord = (record, payload) => {
+export const updateRecord = (
+  record, payload, flashMsg = 'Saved successfully.'
+) => {
   return function(dispatch) {
     dispatch(startUpdateRecord(record, payload));
     return fetch(`${record.update_path}.json`, {
@@ -100,7 +102,7 @@ export const updateRecord = (record, payload) => {
         dispatch(startUpdateRecord(record, record));
         dispatch(failUpdateRecord(record));
       } else {
-        dispatch(completeUpdateRecord(json.record));
+        dispatch(completeUpdateRecord(json.record, flashMsg));
       }
     }).catch(() => {
       const msg = 'There was an error saving this.  Make sure you filled out ' +
@@ -135,15 +137,15 @@ const startCreateRecord = (record) => {
   };
 };
 
-const completeCreateRecord = (record) => {
-  Flash.draw('Saved successfully.');
+const completeCreateRecord = (record, flashMsg) => {
+  Flash.draw(flashMsg);
   return {
     type: types.RECORD_CREATED,
     record: record
   };
 };
 
-export const createRecord = (record) => {
+export const createRecord = (record, flashMsg = 'Saved successfully.') => {
   return function(dispatch, getState) {
     dispatch(startCreateRecord(record));
     return fetch(getState().data.config.baseUri, {
@@ -157,7 +159,7 @@ export const createRecord = (record) => {
       if (json.errors) {
         dispatch(invalidateCurrentRecord(json.errors));
       } else {
-        dispatch(completeCreateRecord(json.record));
+        dispatch(completeCreateRecord(json.record, flashMsg));
         dispatch(fetchRecords());
       }
     }).catch(() => {
