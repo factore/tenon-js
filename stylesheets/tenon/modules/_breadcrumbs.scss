@@ -1,12 +1,17 @@
 .breadcrumbs {
   @extend %truncate;
+  @extend %font-small;
   position: absolute;
   top: 0;
   left: 0;
   margin-left: $default-spacing * 2.5;
-  width: $main-nav-width - ($default-spacing * 3.5);
+  width: $main-nav-width - ($default-spacing * 4);
   height: $util-nav-height;
   line-height: $util-nav-height;
+
+  @include bp-lg {
+    @include font-size(18);
+  }
 }
 
 .breadcrumbs__item {

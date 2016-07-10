@@ -19,7 +19,7 @@
 
   @include bp-md {
     margin: 0 auto;
-    width: calc(100% - #{($main-nav-width + $default-spacing) * 2});
+    width: calc(100% - 460px});
   }
 }
 
