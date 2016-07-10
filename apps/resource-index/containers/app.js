@@ -30,7 +30,7 @@ export default class App extends React.Component {
         <QuickSearchOverlay { ...this.props } />
         <Filtering { ...this.props } />
         <div className="drawer-pusher">
-          <main>
+          <main className="with-fab">
             {addWithModal && <ModalAddButton { ...this.props } />}
             {!addWithModal && <AddButton { ...this.props } />}
             <List { ...this.props } />
