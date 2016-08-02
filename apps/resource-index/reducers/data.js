@@ -7,6 +7,7 @@ const initialState = {
   // The record list
   records: [],
   pagination: { currentPage: 1 },
+  meta: {},
   isFetching: true,
   query: queryStringObject,
 
@@ -77,7 +78,8 @@ export default (state = initialState, action) => {
       ...state,
       isFetching: false,
       records: records,
-      pagination: action.pagination
+      meta: action.meta,
+      pagination: action.meta.pagination
     };
   default:
     return state;

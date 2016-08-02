@@ -14,7 +14,7 @@ export const loadedRecords = (json, append = false) => {
   return {
     type: types.RECORDS_LOADED,
     records: json.records,
-    pagination: json.meta.pagination,
+    meta: json.meta,
     append: append
   };
 };
